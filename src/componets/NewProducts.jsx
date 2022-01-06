@@ -1,0 +1,65 @@
+import React, { useEffect, useState } from 'react'
+
+export const NewProducts = () => {
+
+    
+    const [productos, setproductos] = useState([])
+
+    useEffect(() => {
+        // get data from GitHub api
+        fetch(`http://admin.ctodelpacifico.com/api/getProductosNuevos`)
+        .then(response => response.json()) // parse JSON from request
+        .then(resultData => {
+            setproductos(resultData.productosNuevos)
+        }) // set data for the number of stars
+    }, [])
+
+    return (
+        <div>
+            <section id='store' className="bg-white py-4">
+
+                <div className="container mx-auto flex items-center flex-wrap pt-4">
+
+                    <nav id="store" className="w-full z-30 top-0 px-6 py-1">
+                        <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
+
+                            <p className="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl ">Productos Nuevos</p>
+                        </div>
+                    </nav>
+
+                </div>
+                
+                <div className="flex flex-col bg-white m-auto p-auto">
+                    <div className="flex overflow-x-scroll pb-10 hide-scroll-bar">
+                        <div className="flex flex-nowrap ">
+
+                            {
+                                productos.map( prod => (
+                                    <div className="inline-block px-3">
+                                        <div className="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                                            <div className="w-full p-6 flex flex-col">
+                                                <div>
+                                                    <div className='flex justify-center'>
+                                                        {/*<StaticImage src="../images/img1.jpg" className="h-40 w-40 hover:grow hover:shadow-lg" alt="producto" /> */}
+                                                        <img src={ 'http://admin.ctodelpacifico.com/storage/'+prod.image } className='h-40 w-40 hover:grow hover:shadow-lg' alt={prod.nameProducto} />
+                                                    </div>
+                                                    <div className="pt-3 flex items-center justify-between">
+                                                        <p className="text-base">{prod.nameProducto}</p>
+                                                        <svg class="animate-bounce h-6 w-6 text-red-600 hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                                                    </div>
+                                                    {/*<p className="pt-1 text-gray-900">$ {prod.precio}</p>*/}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>        
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    )
+}
