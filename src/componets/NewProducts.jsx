@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'gatsby'
+
 
 export const NewProducts = () => {
-
-    
     const [productos, setproductos] = useState([])
 
     useEffect(() => {
@@ -35,20 +35,26 @@ export const NewProducts = () => {
 
                             {
                                 productos.map( prod => (
-                                    <div className="inline-block px-3">
+                                    <div className="inline-block px-3" key={prod.idProducto}>
                                         <div className="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-lg transition-shadow duration-300 ease-in-out">
                                             <div className="w-full p-6 flex flex-col">
-                                                <div>
-                                                    <div className='flex justify-center'>
-                                                        {/*<StaticImage src="../images/img1.jpg" className="h-40 w-40 hover:grow hover:shadow-lg" alt="producto" /> */}
-                                                        <img src={ 'http://admin.ctodelpacifico.com/storage/'+prod.image } className='h-40 w-40 hover:grow hover:shadow-lg' alt={prod.nameProducto} />
+                                                <Link to={`/categorias/productos/${prod.idProducto}`} >
+                                                    <div>
+                                                        <div className='flex justify-center'>
+                                                            {/*<StaticImage src="../images/img1.jpg" className="h-40 w-40 hover:grow hover:shadow-lg" alt="producto" /> */}
+                                                            <img src={ 'http://admin.ctodelpacifico.com/storage/'+prod.image } className='h-40 w-40 hover:grow hover:shadow-lg' alt={prod.nameProducto} />
+                                                        </div>
+                                                        <div className="pt-3 flex items-center justify-between">
+                                                            <div>
+                                                                <p className="text-sm">{prod.nameProducto}</p>
+                                                            </div>
+                                                            <div>
+                                                                <svg className="animate-bounce h-6 w-6 text-red-600 hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                                                            </div>
+                                                        </div>
+                                                        {/*<p className="pt-1 text-gray-900">$ {prod.precio}</p>*/}
                                                     </div>
-                                                    <div className="pt-3 flex items-center justify-between">
-                                                        <p className="text-base">{prod.nameProducto}</p>
-                                                        <svg class="animate-bounce h-6 w-6 text-red-600 hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-                                                    </div>
-                                                    {/*<p className="pt-1 text-gray-900">$ {prod.precio}</p>*/}
-                                                </div>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>        

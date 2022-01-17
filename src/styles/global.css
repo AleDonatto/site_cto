@@ -1,6 +1,6 @@
 
 /*slider */
-.work-sans {
+/*.work-sans {
   font-family: 'Work Sans', sans-serif;
 }
       
@@ -49,9 +49,9 @@
 #carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
 #carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
   color: #000;
-  /*Set to match the Tailwind colour you want the active one to be */
+  /*Set to match the Tailwind colour you want the active one to be 
 }
-  /**/  
+
 
 .hide-scroll-bar {
   -ms-overflow-style: none;
@@ -60,7 +60,16 @@
 
 .hide-scroll-bar::-webkit-scrollbar {
   display: none;
+}*/
+
+.gradient {
+  background: linear-gradient(90deg, #364663 0%, #047ddf 100%);
 }
+
+.letras{
+  font-family: 'Source Sans Pro', sans-serif
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

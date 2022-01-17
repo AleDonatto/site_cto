@@ -1,93 +1,52 @@
 import React from 'react'
-import slider from '../images/slider1.jpg'
-import sliderTwo from '../images/slider2.jpg'
-import sliderThree from '../images/slider3.jpg'
+import { StaticImage } from 'gatsby-plugin-image'
 
 export const Slider = () => {
-    const imagen = "https://www.rabemay.com/wp-content/uploads/2016/08/venta.jpg"
 
-    const imgOne = {
-        backgroundImage: "url("+"https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjM0MTM2fQ&auto=htmlFormat&fit=crop&w=1600&q=80" +")",
-    }
-
-    const imgTwo = {
-        backgroundImage: `url(${imagen})`,//"url('https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjM0MTM2fQ&auto=htmlFormat&fit=crop&w=1600&q=80')",
-    }
-
-    const imgThree = {
-        backgroundImage: "url("+"https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjM0MTM2fQ&auto=format&fit=crop&w=1600&q=80"+")",
-    }
   
     return (
         <div>
-            <div className="carousel relative container mx-auto" style={{ maxWith: 1600 }}>
-                <div className="carousel-inner relative overflow-hidden w-full">
-                    { /*Slide 1 */}
-                    <input className="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden={true} defaultChecked="checked" />
-                    <div className="carousel-item absolute opacity-0" style={{ height: 50+'vh' }}>
-                        <div className="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right" style={{ backgroundImage: `url(${slider})` }}>
 
-                            <div className="container mx-auto">
-                                <div className="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
-                                    <p className="text-black text-2xl my-4">Equipo de computo</p>
-                                    <a className="text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">view product</a>
-                                </div>
-                            </div>
-
-                        </div>
+            <div className="pt-24">
+                <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center text-white">
+                    <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left px-5">
+                        <p className="uppercase tracking-loose w-full"></p>
+                        <h1 className="my-4 text-5xl font-bold leading-tight">
+                            Equipo de computo, papeleria en general, toners para impresora y mucho mas!
+                        </h1>
+                        <p className="leading-normal text-2xl mb-8">
+                            Hacemos cotizaciones con servicios de redes, camaras, instalacion de equipos de ofina y paginas web.
+                        </p>
+                        <button className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                            Subscribe
+                        </button>
                     </div>
-                    <label htmlFor="carousel-3" className="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
-                    <label htmlFor="carousel-2" className="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
-                    { /* Slide 2 */}
-                    <input className="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden={true} />
-                    <div className="carousel-item absolute opacity-0 bg-cover bg-right" style={{ height:50+'vh'}}>
-                        <div className="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right" style={{ backgroundImage: `url(${sliderTwo})`}}>
 
-                            <div className="container mx-auto">
-                                <div className="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
-                                    <p className="text-black text-2xl my-4">Papeleria en general</p>
-                                    <a className="text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">view product</a>
-                                </div>
-                            </div>
-
-                        </div>
+                    <div className="w-full md:w-3/5 py-6 text-center">
+                        <StaticImage className="w-full md:w-4/5 z-50" src="../images/hero.png" alt='trabajo'/>
                     </div>
-                    <label htmlFor="carousel-1" className="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
-                    <label htmlFor="carousel-3" className="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
-
-                    {/*Slide 3*/}
-                    <input className="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden={true} />
-                    <div className="carousel-item absolute opacity-0" style={{height:50+'vh'}}>
-                        <div className="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom" style={{ backgroundImage: `url(${sliderThree})` }}>
-
-                            <div className="container mx-auto">
-                                <div className="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
-                                    <p className="text-black text-2xl my-4">Toners para Impresoras</p>
-                                    <a className="text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">view product</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <label htmlFor="carousel-2" className="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
-                    <label htmlFor="carousel-1" className="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
-
-                    { /*Add additional indicators htmlFor each slide*/ }
-                    <ol className="carousel-indicators">
-                        <li className="inline-block mr-3">
-                            <label htmlFor="carousel-1" className="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">•</label>
-                        </li>
-                        <li className="inline-block mr-3">
-                            <label htmlFor="carousel-2" className="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">•</label>
-                        </li>
-                        <li className="inline-block mr-3">
-                            <label htmlFor="carousel-3" className="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">•</label>
-                        </li>
-                    </ol>
-
                 </div>
             </div>
 
+            <div className="relative -mt-12 lg:-mt-24">
+                <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" >
+                    <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
+                        <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fillRule="nonzero">
+                            <path d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496" opacity="0.100000001"></path>
+                            <path
+                            d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"
+                            opacity="0.100000001"
+                            ></path>
+                            <path d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z" id="Path-4" opacity="0.200000003"></path>
+                        </g>
+                        <g transform="translate(-4.000000, 76.000000)" fill="#FFFFFF" fillRule="nonzero">
+                            <path
+                            d="M0.457,34.035 C57.086,53.198 98.208,65.809 123.822,71.865 C181.454,85.495 234.295,90.29 272.033,93.459 C311.355,96.759 396.635,95.801 461.025,91.663 C486.76,90.01 518.727,86.372 556.926,80.752 C595.747,74.596 622.372,70.008 636.799,66.991 C663.913,61.324 712.501,49.503 727.605,46.128 C780.47,34.317 818.839,22.532 856.324,15.904 C922.689,4.169 955.676,2.522 1011.185,0.432 C1060.705,1.477 1097.39,3.129 1121.236,5.387 C1161.703,9.219 1208.621,17.821 1235.4,22.304 C1285.855,30.748 1354.351,47.432 1440.886,72.354 L1441.191,104.352 L1.121,104.031 L0.457,34.035 Z"
+                            ></path>
+                        </g>
+                    </g>
+                </svg>
+            </div>
         </div>
     )
 }
