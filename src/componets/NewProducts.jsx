@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 
-
 export const NewProducts = () => {
     const [productos, setproductos] = useState([])
 
@@ -18,15 +17,23 @@ export const NewProducts = () => {
         <div>
             <section id='store' className="bg-white py-4">
 
-                <div className="container mx-auto flex items-center flex-wrap pt-4">
-
-                    <nav id="store" className="w-full z-30 top-0 px-6 py-1">
-                        <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
-
-                            <p className="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl ">Productos Nuevos</p>
+                <div className="container mx-auto pt-4">
+                    <div className="grid grid-cols-2">
+                        <div>
+                            <nav id="store" className="w-full z-30 top-0 px-6 py-1">
+                                <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
+                                    <p className="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl ">Productos Nuevos</p>
+                                </div>
+                            </nav>
                         </div>
-                    </nav>
-
+                        <div>
+                            <div className='w-full z-30 top-0 px-6 py-1'>
+                                <div className='w-full container mx-auto flex justify-end mt-0 px-2 py-3'>
+                                    <a className='text-base text-blue-500 hover:text-blue-600' href="/categorias/allProductos">Ver todos </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div className="flex flex-col bg-white m-auto p-auto">

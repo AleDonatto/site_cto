@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { Layout } from '../Layout'
 import { Navbar } from '../Navbar'
 import { Seo } from '../Seo'
+import { Link } from 'gatsby'
 //import ReactPaginate from 'react-paginate';
 
 export const CategoriaProductosPage = ({idCategoria}) => {
     const categoriaId = idCategoria
     const [productos, setproductos] = useState([])
     const [categoria, setcategoria] = useState([])
+    const [search, setsearch] = useState("")
+    const [showSearch, setshowSearch] = useState(false)
     //const [data, setdata] = useState([])
     //const [pagination, setpagination] = useState(1)
 
@@ -20,6 +23,11 @@ export const CategoriaProductosPage = ({idCategoria}) => {
             setcategoria(resultData.categoria) 
         } )
     }, [categoriaId])
+
+    const handleChange = (e) => {
+        setsearch(e.target.value)
+        e.target.value === "" ? setshowSearch(false) : setshowSearch(true)
+    }
 
     /*const handlePageChange = (page) => {
         setpagination(page);
@@ -42,24 +50,27 @@ export const CategoriaProductosPage = ({idCategoria}) => {
                                 </svg>
                             </span>
 
-                            <input className="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline" type="text" placeholder="Search" />
+                            <input className="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline" type="text" placeholder="Search" onChange={handleChange}/>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <div className='grid grid-cols-4 bg-white py-10 px-10'>
                 {
                     productos.map( prod => (
                         <div className='px-5 py-5 bg-white grid gap-5' key={prod.idProducto}>
-                            <div className="max-w-xs rounded-md overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer">
-                                <div>
-                                    <img src={'http://admin.ctodelpacifico.com/storage/'+prod.image} className='bg-white' alt="" />
+                            <Link to={`/categorias/productos/${prod.idProducto}`}>
+                                <div className="max-w-xs rounded-md overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer">
+                                    <div>
+                                        <img src={'http://admin.ctodelpacifico.com/storage/'+prod.image} className='bg-white' alt="" />
+                                    </div>
+                                    <div className="py-4 px-4 bg-white">
+                                        <p className='text-gray-500 text-sm text-center'>SKU: {prod.codigo} </p>
+                                        <h3 className="text-sm font-semibold text-gray-600 truncate">{prod.nameProducto}</h3>
+                                    </div>
                                 </div>
-                                <div className="py-4 px-4 bg-white">
-                                    <p className='text-gray-500 text-sm text-center'>SKU: {prod.codigo} </p>
-                                    <h3 className="text-sm font-semibold text-gray-600 truncate">{prod.nameProducto}</h3>
-                                </div>
-                            </div>
+                            </Link>
                         </div>
                     ))
                 }

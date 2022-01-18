@@ -8,7 +8,6 @@ const IndexPage = () => {
     <Layout>
       <Routers />
     </Layout>
-
   )
 }
 
