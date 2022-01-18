@@ -1,21 +1,12 @@
 import React from 'react'
-import { ProductosPage } from '../../../componets/pages/ProductosPage'
-
-/*export default const CategoriaPage = (props) => {
-    return (
-        <div>
-            <p>pruenba</p>
-            <CategoriaProductosPage />
-        </div>
-    )
-}*/    
+import { ProductosPage } from '../../../componets/pages/ProductosPage'  
 
 function ProductoPage(props) {
     const id = props.params.id
 
     return (
         <div>
-            < ProductosPage />
+            < ProductosPage productoId={id}/>
         </div>
     )
 }

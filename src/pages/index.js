@@ -7,14 +7,6 @@ const IndexPage = () => {
   return (
     <Layout>
       <Routers />
-      {/*<Seo title="CTO del Pacifico" lang="es" />
-      <Navbar/>
-      <Slider/>
-
-      <NewProducts />
-      <CheapProducts />
-      <Categories />
-      <About />*/}
     </Layout>
 
   )

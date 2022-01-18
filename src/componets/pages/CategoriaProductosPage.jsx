@@ -50,7 +50,7 @@ export const CategoriaProductosPage = ({idCategoria}) => {
             <div className='grid grid-cols-4 bg-white py-10 px-10'>
                 {
                     productos.map( prod => (
-                        <div className='px-5 py-5 bg-white grid gap-5'>
+                        <div className='px-5 py-5 bg-white grid gap-5' key={prod.idProducto}>
                             <div className="max-w-xs rounded-md overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer">
                                 <div>
                                     <img src={'http://admin.ctodelpacifico.com/storage/'+prod.image} className='bg-white' alt="" />
@@ -65,34 +65,6 @@ export const CategoriaProductosPage = ({idCategoria}) => {
                 }
             </div>
 
-            {/*<div>
-                <ul className="flex pl-0 list-none rounded my-2">
-                    <li className="relative block py-2 px-3 leading-tight bg-white border border-gray-300 text-blue-700 border-r-0 ml-0 rounded-l hover:bg-gray-200"><a className="page-link" href="#">Previous</a></li>
-                    <li className="relative block py-2 px-3 leading-tight bg-white border border-gray-300 text-blue-700 border-r-0 hover:bg-gray-200"><a className="page-link" href="#">1</a></li>
-                    <li className="relative block py-2 px-3 leading-tight bg-white border border-gray-300 text-blue-700 border-r-0 hover:bg-gray-200"><a className="page-link" href="#">2</a></li>
-                    <li className="relative block py-2 px-3 leading-tight bg-white border border-gray-300 text-blue-700 border-r-0 hover:bg-gray-200"><a className="page-link" href="#">3</a></li>
-                    <li className="relative block py-2 px-3 leading-tight bg-white border border-gray-300 text-blue-700 rounded-r hover:bg-gray-200"><a className="page-link" href="#">Next</a></li>
-                </ul>
-                <p>{productos.total}</p>
-                <p>{productos.per_page}</p>
-                <p>{productos.curren_page}</p>
-                <p>{productos.last_page}</p>
-            </div>*/}
-
-            {/*<div>
-                <ReactPaginate
-                    breakLabel="..."
-                    nextLabel="Next >"
-                    onPageChange={handlePageChange}
-                    pageRangeDisplayed={5}
-                    pageCount={4}
-                    previousLabel="< Previous"
-                    renderOnZeroPageCount={true}
-                    className="flex pl-0 list-none rounded my-2"
-                    breakClassName="relative block py-2 px-3 leading-tight bg-white border border-gray-300 text-blue-700 border-r-0 ml-0 rounded-l hover:bg-gray-200"
-                    breakLinkClassName ="page-link"
-                />
-            </div>*/}
         </Layout>
     )
 }

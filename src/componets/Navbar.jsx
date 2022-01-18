@@ -20,57 +20,59 @@ export const Navbar = (props) => {
     }, []);
 
     useEffect(() => {
-        return () => {
-            if(scrollpos > 20){
+        const headerLocal = header
+        const toToggleLocal = toToggle
+        const navcontentLocal = navcontent
+        if(scrollpos > 20){
 
-                if(location.pathname === "/"){
-                    header.current.classList.add('bg-white')
-                    //navaction.current.classList.remove("bg-white");
-                    //navaction.current.classList.add("gradient");
-                    //navaction.current.classList.remove("text-gray-800");
-                    //navaction.current.classList.add("text-white");
-                    
-                    toToggle.current.classList.add("text-gray-800")
-                    toToggle.current.classList.remove("text-white")
+            if(location.pathname === "/"){
+                headerLocal.current.classList.add('bg-white')
+                //navaction.current.classList.remove("bg-white");
+                //navaction.current.classList.add("gradient");
+                //navaction.current.classList.remove("text-gray-800");
+                //navaction.current.classList.add("text-white");
+                
+                toToggleLocal.current.classList.add("text-gray-800")
+                toToggleLocal.current.classList.remove("text-white")
 
-                    header.current.classList.add("shadow");
-                    navcontent.current.classList.remove("bg-gray-100");
-                    navcontent.current.classList.add("bg-white");
-                }else{
-                    header.current.classList.add('bg-white')
-                    header.current.classList.add("shadow");
-                    toToggle.current.classList.add("text-gray-800")
-                    toToggle.current.classList.remove("text-white")
-                }
-            }
-            else{
-                if(location.pathname === '/'){
-                    
-                    header.current.classList.remove("bg-white");
-                    //navaction.current.classList.remove("gradient");
-                    //navaction.current.classList.add("bg-white");
-                    //navaction.current.classList.remove("text-white");
-                    //navaction.current.classList.add("text-gray-800");
-
-                    toToggle.current.classList.add("text-white")
-                    toToggle.current.classList.remove("text-gray-800")
-
-                    header.current.classList.remove("shadow");
-                    navcontent.current.classList.remove("bg-white");
-                    navcontent.current.classList.add("bg-gray-100");
-                }else{
-                    //navaction.current.classList.add("text-gray-800");
-                    navcontent.current.classList.add("bg-gray-100");
-                    toToggle.current.classList.add("text-gray-800")
-                    navcontent.current.classList.remove("bg-white");
-                }
+                headerLocal.current.classList.add("shadow");
+                navcontentLocal.current.classList.remove("bg-gray-100");
+                navcontentLocal.current.classList.add("bg-white");
+            }else{
+                headerLocal.current.classList.add('bg-white')
+                headerLocal.current.classList.add("shadow");
+                toToggleLocal.current.classList.add("text-gray-800")
+                toToggleLocal.current.classList.remove("text-white")
             }
         }
-    }, [scrollpos, header, navcontent, toToggle, navaction, location])
+        else{
+            if(location.pathname === '/'){
+                
+                headerLocal.current.classList.remove("bg-white");
+                //navaction.current.classList.remove("gradient");
+                //navaction.current.classList.add("bg-white");
+                //navaction.current.classList.remove("text-white");
+                //navaction.current.classList.add("text-gray-800");
+
+                toToggleLocal.current.classList.add("text-white")
+                toToggleLocal.current.classList.remove("text-gray-800")
+
+                headerLocal.current.classList.remove("shadow");
+                navcontentLocal.current.classList.remove("bg-white");
+                navcontentLocal.current.classList.add("bg-gray-100");
+            }else{
+                //navaction.current.classList.add("text-gray-800");
+                navcontentLocal.current.classList.add("bg-gray-100");
+                toToggleLocal.current.classList.add("text-gray-800")
+                navcontentLocal.current.classList.remove("bg-white");
+            }
+        }
+        return () => {}
+    }, [scrollpos, location])
     
     return (
         <div>
-            <nav id="header" ref={header} className="fixed w-full z-30 top-0 text-white">
+            <nav ref={header} className="fixed w-full z-30 top-0 text-white">
                 <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2 px-5">
                     <div className="pl-4 flex items-center">
                         <a ref={toToggle} className="text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">

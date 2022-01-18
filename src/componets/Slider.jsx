@@ -3,7 +3,6 @@ import { StaticImage } from 'gatsby-plugin-image'
 
 export const Slider = () => {
 
-  
     return (
         <div>
 
