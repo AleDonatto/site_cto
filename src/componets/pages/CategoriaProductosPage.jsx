@@ -9,6 +9,7 @@ export const CategoriaProductosPage = ({idCategoria}) => {
     const categoriaId = idCategoria
     const [productos, setproductos] = useState([])
     const [categoria, setcategoria] = useState([])
+    const [productosFilter, setprductosFilter] = useState([])
     const [search, setsearch] = useState("")
     const [showSearch, setshowSearch] = useState(false)
     //const [data, setdata] = useState([])
@@ -25,8 +26,10 @@ export const CategoriaProductosPage = ({idCategoria}) => {
     }, [categoriaId])
 
     const handleChange = (e) => {
-        setsearch(e.target.value)
         e.target.value === "" ? setshowSearch(false) : setshowSearch(true)
+        setsearch(e.target.value)
+        const filter = productos.filter(prod => prod.nameProducto.toLowerCase().match(search.toLowerCase()))
+        setprductosFilter(filter)
     }
 
     /*const handlePageChange = (page) => {
@@ -56,25 +59,49 @@ export const CategoriaProductosPage = ({idCategoria}) => {
                 </div>
             </div>
             
-            <div className='grid grid-cols-4 bg-white py-10 px-10'>
-                {
-                    productos.map( prod => (
-                        <div className='px-5 py-5 bg-white grid gap-5' key={prod.idProducto}>
-                            <Link to={`/categorias/productos/${prod.idProducto}`}>
-                                <div className="max-w-xs rounded-md overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer">
-                                    <div>
-                                        <img src={'http://admin.ctodelpacifico.com/storage/'+prod.image} className='bg-white' alt="" />
+            {
+                showSearch 
+                ? 
+                <div className='grid grid-cols-4 bg-white py-10 px-10'>
+                    {
+                        productosFilter.map( prodFil => (
+                            <div className='px-5 py-5 bg-white grid gap-5' key={prodFil.idProducto}>
+                                <Link to={`/categorias/productos/${prodFil.idProducto}`}>
+                                    <div className="max-w-xs rounded-md overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer">
+                                        <div>
+                                            <img src={'http://admin.ctodelpacifico.com/storage/'+prodFil.image} className='bg-white' alt={prodFil.nameProducto} />
+                                        </div>
+                                        <div className="py-4 px-4 bg-white">
+                                            <p className='text-gray-500 text-sm text-center'>SKU: {prodFil.codigo} </p>
+                                            <h3 className="text-sm font-semibold text-gray-600 text-ellipsis overflow-hidden">{prodFil.nameProducto}</h3>
+                                        </div>
                                     </div>
-                                    <div className="py-4 px-4 bg-white">
-                                        <p className='text-gray-500 text-sm text-center'>SKU: {prod.codigo} </p>
-                                        <h3 className="text-sm font-semibold text-gray-600 truncate">{prod.nameProducto}</h3>
+                                </Link>
+                            </div>
+                        ))
+                    }
+                </div>
+                : 
+                <div className='grid grid-cols-4 bg-white py-10 px-10'>
+                    {
+                        productos.map( prod => (
+                            <div className='px-5 py-5 bg-white grid gap-5' key={prod.idProducto}>
+                                <Link to={`/categorias/productos/${prod.idProducto}`}>
+                                    <div className="max-w-xs rounded-md overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer">
+                                        <div>
+                                            <img src={'http://admin.ctodelpacifico.com/storage/'+prod.image} className='bg-white' alt={prod.nameProducto} />
+                                        </div>
+                                        <div className="py-4 px-4 bg-white">
+                                            <p className='text-gray-500 text-sm text-center'>SKU: {prod.codigo} </p>
+                                            <h3 className="text-sm font-semibold text-gray-600 text-ellipsis overflow-hidden">{prod.nameProducto}</h3>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
-                        </div>
-                    ))
-                }
-            </div>
+                                </Link>
+                            </div>
+                        ))
+                    }
+                </div>
+            }
 
         </Layout>
     )
