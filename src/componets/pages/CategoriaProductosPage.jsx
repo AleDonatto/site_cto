@@ -28,7 +28,7 @@ export const CategoriaProductosPage = ({idCategoria}) => {
     const handleChange = (e) => {
         e.target.value === "" ? setshowSearch(false) : setshowSearch(true)
         setsearch(e.target.value)
-        const filter = productos.filter(prod => prod.nameProducto.toLowerCase().match(search.toLowerCase()))
+        const filter = productos.filter(prod => prod.nameProducto.toLowerCase().match(search.toLowerCase()) || prod.descripcion.toLowerCase().match(search.toLowerCase()) || prod.codigo.toLowerCase().match(search.toLowerCase()) )
         setprductosFilter(filter)
     }
 
