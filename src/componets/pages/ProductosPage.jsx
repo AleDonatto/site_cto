@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Seo } from '../Seo'
-//import { Working } from '../Working'
 import { Navbar } from '../Navbar'
 import { Link } from 'gatsby'
+import {useDispatch} from 'react-redux'
+import { addCarProducts } from '../actions/addCarProducts'
 
 
 export const ProductosPage = ({productoId}) => {
+
+    const dispatch = useDispatch()
 
     const dimension = {
         height: "100%",
@@ -14,6 +17,7 @@ export const ProductosPage = ({productoId}) => {
 
     const [producto, setproducto] = useState([])
     const [moreProductos, setmoreProductos] = useState([])
+    const [cantidad, setcantidad] = useState(1);
 
     useEffect(() => {
         fetch(`http://admin.ctodelpacifico.com/api/getProducto/${productoId}`)
@@ -24,6 +28,26 @@ export const ProductosPage = ({productoId}) => {
         })
         return () => {}
     }, [productoId])
+
+    const handleAddCantidad = () => {
+        if(cantidad === 100){
+            setcantidad(100)
+        }else{
+            setcantidad(cantidad+1)
+        }
+    }
+
+    const handleSubstracCantidad = () => {
+        if(cantidad === 1){
+            setcantidad(1)
+        }else{
+            setcantidad(cantidad-1)
+        }
+    }
+
+    const handleAddProducto = (id, nombre, image, cantidad) => {
+        dispatch(addCarProducts(id, nombre, image,cantidad))
+    }
 
     return (
         <div>
@@ -43,11 +67,11 @@ export const ProductosPage = ({productoId}) => {
                                 <div className="mt-2">
                                     <label className="text-gray-700 text-sm" htmlFor="count">Cantidad:</label>
                                     <div className="flex items-center mt-1">
-                                        <button className="text-gray-500 focus:outline-none focus:text-gray-600">
+                                        <button className="text-gray-500 focus:outline-none focus:text-gray-600 hover:text-gray-800" onClick={handleAddCantidad}>
                                             <svg className="h-5 w-5" fill="none" strokeLinecap="round"  strokeLinejoin="round"  strokeWidth={2} viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                         </button>
-                                        <span className="text-gray-700 text-lg mx-2">1</span>
-                                        <button className="text-gray-500 focus:outline-none focus:text-gray-600">
+                                        <span className="text-gray-700 text-lg mx-2">{cantidad}</span>
+                                        <button className="text-gray-500 focus:outline-none focus:text-gray-600 hover:text-gray-800" onClick={handleSubstracCantidad}>
                                             <svg className="h-5 w-5" fill="none" strokeLinecap="round"  strokeLinejoin="round"  strokeWidth={2} viewBox="0 0 24 24" stroke="currentColor"><path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                         </button>
                                     </div>
@@ -59,7 +83,10 @@ export const ProductosPage = ({productoId}) => {
                                     </div>
                                 </div>
                                 <div className="flex items-center mt-6">
-                                    <button disabled className="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded focus:outline-none focus:bg-indigo-500">Ordenar en Tienda</button>
+                                    <button disabled className="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded focus:outline-none focus:bg-indigo-500 hover:bg-indigo-800" 
+                                    onClick={handleAddProducto(producto.idProducto, producto.nameProducto, producto.image, cantidad)}>
+                                        Ordenar en Tienda
+                                    </button>
                                     {/*<button className="mx-2 text-gray-600 border rounded-md p-2 hover:bg-gray-200 focus:outline-none">
                                         <svg className="h-5 w-5" fill="none" strokeLinecap="round"  strokeLinejoin="round"  strokeWidth={2} viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                                     </button>*/}
