@@ -1,8 +1,8 @@
 import {createStore, combineReducers} from 'redux'
-import { carListReducer } from './carListReducer';
+import { CarListReducer } from './CarListReducer';
 
 const reducers = combineReducers({
-    listCar: carListReducer
+    listCar: CarListReducer
 })
 
-export const store = createStore(reducers);
+export const Store = createStore(reducers);

@@ -1,5 +1,5 @@
 
-export const addCarProducts = (id, nombre, image, cantidad) => ({
+export const AddCarProducts = (id, nombre, image, cantidad) => ({
     type: 'agregar',
     payload: {
         id,

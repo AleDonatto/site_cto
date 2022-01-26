@@ -3,7 +3,7 @@ import { Seo } from '../Seo'
 import { Navbar } from '../Navbar'
 import { Link } from 'gatsby'
 import {useDispatch} from 'react-redux'
-import { addCarProducts } from '../actions/addCarProducts'
+import { AddCarProducts } from '../actions/AddCarProducts'
 
 
 export const ProductosPage = ({productoId}) => {
@@ -46,7 +46,7 @@ export const ProductosPage = ({productoId}) => {
     }
 
     const handleAddProducto = (id, nombre, image, cantidad) => {
-        dispatch(addCarProducts(id, nombre, image,cantidad))
+        dispatch(AddCarProducts(id, nombre, image,cantidad))
     }
 
     return (

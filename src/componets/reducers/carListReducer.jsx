@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-export const carListReducer  = (state = [], action) => {
-    const [carList, setcarList] = useState([]);
-
+export const CarListReducer  = (state = [], action) => {
+    
+    //const [carList, setcarList] = useState([]);
     
     switch (action) {
         case 'agregar':
-            const array = [];
+            /*const array = [];
             if(carList.length === 0){
                 array.push({ adultos:2 , ninos:0})
             
@@ -15,12 +15,12 @@ export const carListReducer  = (state = [], action) => {
                 array.push(...carList, { adultos:2 , ninos:0})
             
                 setcarList(array)
-            }
+            }*/
 
-            return carList;
+            return state;
 
         case 'eliminar':
-            return {};
+            return state;
     
         default:
             return state;

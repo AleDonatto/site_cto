@@ -3,11 +3,11 @@ import { Layout } from "../componets/Layout"
 import { Routers } from "../componets/Routers"
 import { Provider } from "react-redux"
 import "../styles/global.css"
-import { store } from "../componets/reducers/store"
+import { Store } from "../componets/reducers/Store"
 
 const IndexPage = () => {
   return (
-    <Provider store={store}>
+    <Provider store={Store}>
       <Layout>
         <Routers />
       </Layout>
