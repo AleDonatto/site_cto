@@ -9,6 +9,7 @@ export const Routers = () => {
     return (
         <div>
             <Router basepath="/">
+                
                 <HomePage path="/" />
                 <CategoriaProductosPage path="/categorias/:id" />
                 <ProductosPage path="/categorias/productos/:id" />

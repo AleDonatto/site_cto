@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Layout } from '../Layout'
+//import { Layout } from '../Layout'
 import { Navbar } from '../Navbar'
-import { Seo } from '../Seo'
+//import { Seo } from '../Seo'
 import { Link } from 'gatsby'
 //import ReactPaginate from 'react-paginate';
 
@@ -37,8 +37,7 @@ export const CategoriaProductosPage = ({idCategoria}) => {
     }*/
     
     return (
-        <Layout>
-            <Seo title="CTO del Pacifico" lang="es" />
+        <>
             <Navbar/>
             <div className='container mx-auto px-10 pt-10 mt-14'>
                 <div className="grid grid-cols-2">
@@ -103,6 +102,6 @@ export const CategoriaProductosPage = ({idCategoria}) => {
                 </div>
             }
 
-        </Layout>
+        </>
     )
 }

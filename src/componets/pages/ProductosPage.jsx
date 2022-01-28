@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Seo } from '../Seo'
+//import { Seo } from '../Seo'
 import { Navbar } from '../Navbar'
 import { Link } from 'gatsby'
-import {useDispatch} from 'react-redux'
-import { AddCarProducts } from '../actions/AddCarProducts'
-
+import addProducto from '../actions/actionsProductos'
 
 export const ProductosPage = ({productoId}) => {
-
-    const dispatch = useDispatch()
 
     const dimension = {
         height: "100%",
@@ -45,13 +41,12 @@ export const ProductosPage = ({productoId}) => {
         }
     }
 
-    const handleAddProducto = (id, nombre, image, cantidad) => {
-        dispatch(AddCarProducts(id, nombre, image,cantidad))
+    const handleAddProducto = (id,image, nameproducto,  cantidad) => {
+        addProducto(id, nameproducto, image, cantidad)
     }
 
     return (
         <div>
-            <Seo title="CTO del Pacifico" lang="es" />
             <Navbar />
             <div className="mt-10 py-10 bg-white">
                 <main className="my-8">
@@ -83,8 +78,8 @@ export const ProductosPage = ({productoId}) => {
                                     </div>
                                 </div>
                                 <div className="flex items-center mt-6">
-                                    <button disabled className="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded focus:outline-none focus:bg-indigo-500 hover:bg-indigo-800" 
-                                    onClick={handleAddProducto(producto.idProducto, producto.nameProducto, producto.image, cantidad)}>
+                                    <button type='button' className="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded focus:outline-none focus:bg-indigo-500 hover:bg-indigo-800" 
+                                    onClick={(e) => handleAddProducto(producto.idProducto,producto.image,producto.nameProducto, cantidad)}>
                                         Ordenar en Tienda
                                     </button>
                                     {/*<button className="mx-2 text-gray-600 border rounded-md p-2 hover:bg-gray-200 focus:outline-none">
@@ -105,7 +100,6 @@ export const ProductosPage = ({productoId}) => {
                                                     <Link to={`/categorias/productos/${moreProd.idProducto}`} >
                                                         <div>
                                                             <div className='flex justify-center'>
-                                                                {/*<StaticImage src="../images/img1.jpg" className="h-40 w-40 hover:grow hover:shadow-lg" alt="producto" /> */}
                                                                 <img src={ `http://admin.ctodelpacifico.com/storage/${moreProd.image}` } className='h-40 w-40 hover:grow hover:shadow-lg' alt={moreProd.nameProducto} />
                                                             </div>
                                                             <div className="pt-3 flex items-center justify-between">

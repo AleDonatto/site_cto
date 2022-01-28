@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Layout } from '../Layout'
 import { Navbar } from '../Navbar'
-import { Seo } from '../Seo'
+//import { Seo } from '../Seo'
 import { Link } from 'gatsby'
 
 export const AllProducts = () => {
@@ -28,8 +28,7 @@ export const AllProducts = () => {
     }
     
     return (
-        <Layout>
-            <Seo />
+        <>
             <Navbar/>
 
             <div className='container mx-auto px-10 pt-10 mt-14'>
@@ -94,6 +93,6 @@ export const AllProducts = () => {
                     }
                 </div>
             }
-        </Layout>
+        </>
     )
 }
