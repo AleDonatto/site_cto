@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'  
 import { StaticImage } from 'gatsby-plugin-image'
 import { useLocation } from "@reach/router"
+import {consProductos} from './actions/actionsProductos'
 
 export const Navbar = (props) => {
     const location = useLocation();
@@ -10,6 +11,7 @@ export const Navbar = (props) => {
     const toToggle = useRef()
 
     const [scrollpos, setscrollpos] = useState(0)
+    const [cantidad, setcantidad] = useState(0);
 
     useEffect(() => {
         const onScroll = () => setscrollpos(window.pageYOffset);
@@ -18,6 +20,13 @@ export const Navbar = (props) => {
         window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
+
+    useEffect(() => {
+        const productos = consProductos()
+        setcantidad(productos.length)
+        return () => {};
+    }, [props]);
+    
 
     useEffect(() => {
         const headerLocal = header
@@ -113,7 +122,7 @@ export const Navbar = (props) => {
                         }
                         <button ref={navaction} id="navAction" className='mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out'>
                             <a href="http://admin.ctodelpacifico.com/">
-                                <div className="absolute -top-1 right-0 z-10 bg-blue-600 text-xs font-bold text-white px-1 py-0.5 rounded-sm">12</div>
+                                <div className="absolute -top-1 right-0 z-10 bg-blue-600 text-xs font-bold text-white px-1 py-0.5 rounded-sm">{cantidad}</div>
                                 <svg className="fill-current text-gray-500 font-bold hover:text-black w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                             </a>
                         </button>

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 //import { Seo } from '../Seo'
 import { Navbar } from '../Navbar'
 import { Link } from 'gatsby'
-import addProducto from '../actions/actionsProductos'
+import {addProducto, consProductos} from '../actions/actionsProductos'
+import Swal from 'sweetalert2'
 
 export const ProductosPage = ({productoId}) => {
 
@@ -14,6 +15,7 @@ export const ProductosPage = ({productoId}) => {
     const [producto, setproducto] = useState([])
     const [moreProductos, setmoreProductos] = useState([])
     const [cantidad, setcantidad] = useState(1);
+    const [carList, setcarList] = useState([]);
 
     useEffect(() => {
         fetch(`http://admin.ctodelpacifico.com/api/getProducto/${productoId}`)
@@ -26,7 +28,7 @@ export const ProductosPage = ({productoId}) => {
     }, [productoId])
 
     const handleAddCantidad = () => {
-        if(cantidad === 100){
+        if(cantidad === 100){ 
             setcantidad(100)
         }else{
             setcantidad(cantidad+1)
@@ -41,13 +43,18 @@ export const ProductosPage = ({productoId}) => {
         }
     }
 
-    const handleAddProducto = (id,image, nameproducto,  cantidad) => {
+    const handleAddProducto = (id,nameproducto,image,cantidad) => {
         addProducto(id, nameproducto, image, cantidad)
+
+        Swal.fire('Good job!', 'Se agrego el producto!','success')
+        const array = consProductos()
+        setcarList(array.lenght)
+        setcantidad(1)
     }
 
     return (
         <div>
-            <Navbar />
+            <Navbar numero={carList} />
             <div className="mt-10 py-10 bg-white">
                 <main className="my-8">
                     <div className="container mx-auto px-6">
@@ -82,9 +89,6 @@ export const ProductosPage = ({productoId}) => {
                                     onClick={(e) => handleAddProducto(producto.idProducto,producto.image,producto.nameProducto, cantidad)}>
                                         Ordenar en Tienda
                                     </button>
-                                    {/*<button className="mx-2 text-gray-600 border rounded-md p-2 hover:bg-gray-200 focus:outline-none">
-                                        <svg className="h-5 w-5" fill="none" strokeLinecap="round"  strokeLinejoin="round"  strokeWidth={2} viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                                    </button>*/}
                                 </div>
                             </div>
                         </div>

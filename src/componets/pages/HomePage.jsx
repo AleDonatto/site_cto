@@ -12,7 +12,7 @@ export const HomePage = () => {
         <>
             <Seo title="CTO del Pacifico" lang="es" />
             <div className='leading-normal tracking-normal gradient' >
-                <Navbar/>
+                <Navbar numero={[]}/>
                 <Slider/>
 
                 <NewProducts />
