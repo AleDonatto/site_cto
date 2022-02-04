@@ -86,7 +86,7 @@ export const ProductosPage = ({productoId}) => {
                                 </div>
                                 <div className="flex items-center mt-6">
                                     <button type='button' className="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded focus:outline-none focus:bg-indigo-500 hover:bg-indigo-800" 
-                                    onClick={(e) => handleAddProducto(producto.idProducto,producto.image,producto.nameProducto, cantidad)}>
+                                    onClick={(e) => handleAddProducto(producto.idProducto,producto.nameProducto,producto.image, cantidad, producto.precio)}>
                                         Ordenar en Tienda
                                     </button>
                                 </div>
