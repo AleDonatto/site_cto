@@ -162,7 +162,7 @@ export const CardList = () => {
                                             <h1 className="ml-2 font-bold uppercase">Detalles del comprador</h1>
                                         </div>
                                         <div className="p-4">
-                                            <p className="mb-4 italic">Ingrese su nombre y un numero de telfono para que se pongan en contacto con usted despue de realizar su pedido</p>
+                                            <p className="mb-4 italic">Ingrese su nombre y un numero de telefono para que se pongan en contacto con usted despues de realizar su pedido</p>
                                             <label htmlFor="nombre">Nombre Cliente</label>
                                             <input id="nombre" name='nombre' className='w-full h-10 p-2 bg-gray-100 rounded' type="text" required  onChange={handleInputChange}/>
                                             <label htmlFor="telefono">Tel. Celular</label>
