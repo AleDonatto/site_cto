@@ -36,23 +36,24 @@ export function deleteProducto(index){
     localStorage.setItem('listaProductos', JSON.stringify(array))
 } 
 
-export function enviarListaProductos(nombre, telefono){
+export async function enviarListaProductos(nombre, telefono){
     const local = localStorage.getItem('listaProductos')
 
     const datos = {
-        name: nombre,
-        numeroTel: telefono ,
+        nombre: nombre,
+        telefono: telefono ,
         productos:  JSON.parse(local)
     }
 
-    //const api = await fetch(`http://admin.ctodelpacifico.com/api/getProducto/`, datos)
+    const api = await fetch(`http://127.0.0.1:8000/api/shopClient`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos) 
+    })
 
-    return 'Se envio tu compra, en breve se pondran en contacto al numero que proporcionaste'
-    //.then( response => response.json())
-    /*.then(resultData => {
-        setproducto(resultData.producto)
-        setmoreProductos(resultData.moreProductos)
-    })*/
+    return api.json();
 }
 
 export function clearStorage(){

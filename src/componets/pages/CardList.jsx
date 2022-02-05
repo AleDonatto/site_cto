@@ -45,20 +45,24 @@ export const CardList = () => {
             })
         }else{
             const mensaje = enviarListaProductos(datosCliente.nombre, datosCliente.telefono)
+            mensaje.then( response => {
+                console.log(response.mensaje)
 
-            Swal.fire({
-                title: 'God Job!',
-                text: mensaje.toString(),
-                icon: 'success',
-                showCancelButton: false,
-                confirmButtonColor: '#3085d6',
-                //cancelButtonColor: '#d33',
-                confirmButtonText: 'Entendido!'
-            }).then((result) => {
-                if (result.isConfirmed) {
+
+                /*Swal.fire({
+                    title: 'God Job!',
+                    text: mensaje.toString(),
+                    icon: 'success',
+                    showCancelButton: false,
+                    confirmButtonColor: '#3085d6',
+                    //cancelButtonColor: '#d33',
+                    confirmButtonText: 'Entendido!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        navigate("/")
+                    }
                     navigate("/")
-                }
-                navigate("/")
+                })*/
             })
         }
     }
@@ -78,7 +82,7 @@ export const CardList = () => {
     return (
         <div>
             <Seo title="CTO del Pacifico | Lista de Compras" lang="es" />
-            <Navbar numero={[]} />
+            <Navbar numero={listaProductos} />
 
             {
                 listaProductos.length === 0
