@@ -46,12 +46,10 @@ export const CardList = () => {
         }else{
             const mensaje = enviarListaProductos(datosCliente.nombre, datosCliente.telefono)
             mensaje.then( response => {
-                console.log(response.mensaje)
-
-
-                /*Swal.fire({
+                
+                Swal.fire({
                     title: 'God Job!',
-                    text: mensaje.toString(),
+                    text: response.mensaje,
                     icon: 'success',
                     showCancelButton: false,
                     confirmButtonColor: '#3085d6',
@@ -59,10 +57,15 @@ export const CardList = () => {
                     confirmButtonText: 'Entendido!'
                 }).then((result) => {
                     if (result.isConfirmed) {
+                        clearStorage()
                         navigate("/")
                     }
+                    clearStorage()
                     navigate("/")
-                })*/
+                })
+            })
+            .catch( error => {
+                console.log(error.data)
             })
         }
     }
