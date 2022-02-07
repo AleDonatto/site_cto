@@ -41,11 +41,12 @@ export async function enviarListaProductos(nombre, telefono){
 
     const datos = {
         nombre: nombre,
-        telefono: telefono ,
-        productos:  JSON.parse(local)
+        telefono: telefono,
+        productos: JSON.parse(local)
     }
 
     const api = await fetch(`http://admin.ctodelpacifico.com/api/shopClient`, {
+    //const api = await fetch('http://127.0.0.1:8000/api/shopClient', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

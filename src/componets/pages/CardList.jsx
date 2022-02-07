@@ -46,9 +46,9 @@ export const CardList = () => {
         }else{
             const mensaje = enviarListaProductos(datosCliente.nombre, datosCliente.telefono)
             mensaje.then( response => {
-                
+
                 Swal.fire({
-                    title: 'God Job!',
+                    title: 'Listo!',
                     text: response.mensaje,
                     icon: 'success',
                     showCancelButton: false,
@@ -65,7 +65,7 @@ export const CardList = () => {
                 })
             })
             .catch( error => {
-                console.log(error.data)
+                console.log(error)
             })
         }
     }
