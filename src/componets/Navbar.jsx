@@ -13,6 +13,8 @@ export const Navbar = (props) => {
     const [scrollpos, setscrollpos] = useState(0)
     const [cantidad, setcantidad] = useState(0);
 
+    const [menuresponsive, setmenuresponsive] = useState(false);
+
     useEffect(() => {
         const onScroll = () => setscrollpos(window.pageYOffset);
         // clean up code
@@ -78,6 +80,26 @@ export const Navbar = (props) => {
         }
         return () => {}
     }, [scrollpos, location])
+
+    useEffect(() => {
+        if (menuresponsive) {
+            // click on the link
+            if (navcontent.current.classList.contains("hidden")) {
+            navcontent.current.classList.remove("hidden");
+            } else {
+            navcontent.current.classList.add("hidden");
+            }
+        } else {
+            // click both outside link and outside menu, hide menu
+            navcontent.current.classList.add("hidden");
+        }
+        return () => {};
+    }, [menuresponsive]);
+    
+
+    const handleMenuResponsive = () => {
+        setmenuresponsive(!menuresponsive)   
+    }
     
     return (
         <div>
@@ -90,7 +112,8 @@ export const Navbar = (props) => {
                         </a>
                     </div>
                     <div className="block lg:hidden pr-4">
-                        <button id="nav-toggle" className="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                        <button id="nav-toggle" className="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                        onClick={handleMenuResponsive}>
                             <svg className="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <title>Menu</title>
                                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />

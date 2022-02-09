@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Layout } from '../Layout'
+//import { Layout } from '../Layout'
 import { Navbar } from '../Navbar'
 //import { Seo } from '../Seo'
 import { Link } from 'gatsby'

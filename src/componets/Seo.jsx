@@ -30,6 +30,7 @@ export const Seo = ({ title, description, image, article, lang}) => {
           siteUrl: url
           defaultImage: image
           twitterUsername: twitterUsername
+          keywords: keywords 
         }
       }
     }
@@ -53,12 +54,13 @@ export const Seo = ({ title, description, image, article, lang}) => {
   const { pathname } = useLocation()
   //const { site } = useStaticQuery(query)
   const {
-      defaultTitle,
-      titleTemplate,
-      defaultDescription,
-      siteUrl,
-      defaultImage,
-      twitterUsername,
+    defaultTitle,
+    titleTemplate,
+    defaultDescription,
+    siteUrl,
+    defaultImage,
+    twitterUsername,
+    keywords
   } = site.siteMetadata
       
   const seo = {
@@ -72,6 +74,8 @@ export const Seo = ({ title, description, image, article, lang}) => {
     <Helmet title={seo.title} titleTemplate={titleTemplate} htmlAttributes={{lang}}>
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
+      <meta name='keywords' content={keywords} />
+      <meta name="robots" content="index, follow"/>
 
       { seo.url && <meta property="og:url" content={seo.url} /> }
       {( article ? true : null) && <meta property="og:title" content="article" />}
